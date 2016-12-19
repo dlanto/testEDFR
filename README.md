@@ -1,7 +1,7 @@
 # testEDFR
 
 #Version : 
-1.0
+2.0
 
 #Installation :
 - A l'aide de mySQL, importez la base de données à l'aide du fichier bdd.sql. L'utilisateur par défaut est "root" mais peut être modifié dans le fichier conf.php.
