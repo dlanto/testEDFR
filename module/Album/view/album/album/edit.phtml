@@ -1,0 +1,81 @@
+<div id="container">
+<?php
+// module/Album/view/album/album/edit.phtml:
+
+$title = 'Modifier un utilisateur';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$nom = $form->get('nom');
+$nom->setAttribute('class', 'form-control');
+$nom->setAttribute('placeholder', 'Nom de l\'utilisateur');
+
+$prenom = $form->get('prenom');
+$prenom->setAttribute('class', 'form-control');
+$prenom->setAttribute('placeholder', 'Prenom de l\'utilisateur');
+
+$mail = $form->get('mail');
+$mail->setAttribute('class', 'form-control');
+$mail->setAttribute('placeholder', 'Mail de l\'utilisateur');
+
+$telephone = $form->get('telephone');
+$telephone->setAttribute('class', 'form-control');
+$telephone->setAttribute('placeholder', 'Telephone de l\'utilisateur');
+
+$motdepasse = $form->get('motdepasse');
+$motdepasse->setAttribute('class', 'form-control');
+$motdepasse->setAttribute('placeholder', 'Mot de passe de l\'utilisateur');
+//$motdepasse->setAttribute('type', 'password');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+$submit->setAttribute('value', 'Modifier');
+
+$form->setAttribute('action', $this->url('album', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($nom) ?>
+    <?= $this->formElement($nom) ?>
+    <?= $this->formElementErrors()->render($nom, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($prenom) ?>
+    <?= $this->formElement($prenom) ?>
+    <?= $this->formElementErrors()->render($prenom, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($mail) ?>
+    <?= $this->formElement($mail) ?>
+    <?= $this->formElementErrors()->render($mail, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($telephone) ?>
+    <?= $this->formElement($telephone) ?>
+    <?= $this->formElementErrors()->render($telephone, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($motdepasse) ?>
+    <?= $this->formElement($motdepasse) ?>
+    <?= $this->formElementErrors()->render($motdepasse, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();
+?>
+
+<p></p>
+<a href="<?= $this->url('album', ['action' => 'index']) ?>">retout à l'acceuil</a>
+</div>

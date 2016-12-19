@@ -1,0 +1,43 @@
+<div id="container">
+<?php
+// module/Album/view/album/album/index.phtml:
+$this->headScript() 
+            ->appendFile($this->basePath() . '/js/jquery.js');
+
+$title = 'Menu';
+$this->headTitle($title);
+?>
+
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a id="ajout" href="<?= $this->url('album', ['action' => 'index']) ?>">Ajouter un utilisateur</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>Mail</th>
+    <th>Telephone</th>
+    <th><div id="id_div_1" style="display:none;">Mot de passe</div></th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($albums as $album) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($album->nom) ?></td>
+        <td><?= $this->escapeHtml($album->prenom) ?></td>
+        <td><?= $this->escapeHtml($album->mail) ?></td>
+        <td><?= $this->escapeHtml($album->telephone) ?></td>
+        <td><div id="id_div_1" style="display:none;">
+            <?= $this->escapeHtml($album->motdepasse) ?>
+        </div>
+        </td>
+
+        <td>
+            <a id="modif" href="<?= $this->url('album', ['action' => 'edit', 'id' => $album->id]) ?>">Modifier</a>
+            <a id="sup" href="<?= $this->url('album', ['action' => 'delete', 'id' => $album->id]) ?>">Supprimer</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
+</div>
